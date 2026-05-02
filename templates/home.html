@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block side_visual %}
+<section class="hidden lg:flex lg:w-1/2 relative flex-col justify-center px-12 overflow-hidden bg-[#0A0A0B]">
+    <div class="absolute inset-0 z-0">
+        <img class="w-full h-full object-cover opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClaed-wmCINC15ZMLVuz01eJB4bfqT7GPDNXJtVyFahSKKE6XamR2w6LnQi6Mfqxcro2BM7GTIYCFQ1taHiJON5tsPSEwVfQEiWHcvCwg7x4x4PgcxAz7r31IRSRLKDVuIwSHTtbzIzXw1Uy-8rqVG213j-q7ID1G7gUTI_tU5o4-mpbEsY81StQ8Ee7DJYzPNFva7Dx1_Bxs5mrLUu3lZ_x1u3dc4Ln3OE4GswMPURR-bDg4xNGYcR7r4Uc6JENGmcoSCEtWzSnen" alt="Dashboard Visual">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0B] via-transparent to-primary/10"></div>
+    </div>
+    <div class="relative z-10 text-center">
+        <h2 class="text-4xl font-bold text-on-background mb-4">Welcome Back</h2>
+        <p class="text-xl text-primary font-medium">{{ user.username }}</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="text-center mb-8">
+    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary-container/10 border border-primary/20 mb-6">
+        <span class="material-symbols-outlined text-primary text-4xl">home</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-bold text-on-background mb-2">Dashboard</h2>
+    <p class="text-outline">You are successfully logged in.</p>
+</div>
+
+<div class="space-y-4">
+    <div class="p-4 sm:p-6 bg-[#1c1b1c] border border-outline-variant rounded-xl flex items-center justify-between group hover:border-primary/50 transition-all cursor-pointer">
+        <div class="flex items-center space-x-4">
+            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">person</span>
+            <div>
+                <h3 class="font-bold text-on-surface">Profile Settings</h3>
+                <p class="text-sm text-outline">Manage your account details</p>
+            </div>
+        </div>
+        <span class="material-symbols-outlined text-outline">chevron_right</span>
+    </div>
+
+    <div class="p-4 sm:p-6 bg-[#1c1b1c] border border-outline-variant rounded-xl flex items-center justify-between group hover:border-primary/50 transition-all cursor-pointer">
+        <div class="flex items-center space-x-4">
+            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">notifications</span>
+            <div>
+                <h3 class="font-bold text-on-surface">Notifications</h3>
+                <p class="text-sm text-outline">Check your recent updates</p>
+            </div>
+        </div>
+        <span class="material-symbols-outlined text-outline">chevron_right</span>
+    </div>
+    
+    <div class="mt-12">
+        <a href="{% url 'logout' %}" class="w-full py-4 rounded-lg border border-red-500/30 text-red-400 hover:bg-red-500/10 font-bold text-center block transition-all">
+            Logout
+        </a>
+    </div>
+</div>
+{% endblock %}

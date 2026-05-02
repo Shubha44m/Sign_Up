@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="text-center mb-6 sm:mb-8">
+    <h2 class="text-2xl sm:text-3xl font-bold text-on-background mb-2">Sign Up</h2>
+    <p class="text-outline">Create your account</p>
+</div>
+
+<form class="space-y-5" method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+    
+    <div class="relative floating-label-input group">
+        <div class="absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">
+            <span class="material-symbols-outlined">person</span>
+        </div>
+        <input class="w-full bg-[#1c1b1c] border border-outline-variant rounded-lg py-4 pl-12 pr-4 text-on-surface focus:outline-none focus:border-primary transition-all placeholder-transparent" 
+               id="{{ form.username.id_for_label }}" 
+               name="username" 
+               placeholder=" " 
+               type="text" 
+               value="{{ form.username.value|default:'' }}"
+               required/>
+        <label class="absolute left-12 top-1/2 -translate-y-1/2 text-outline pointer-events-none transition-all duration-200" for="{{ form.username.id_for_label }}">
+            Username
+        </label>
+    </div>
+
+    <div class="relative floating-label-input group">
+        <div class="absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">
+            <span class="material-symbols-outlined">alternate_email</span>
+        </div>
+        <input class="w-full bg-[#1c1b1c] border border-outline-variant rounded-lg py-4 pl-12 pr-4 text-on-surface focus:outline-none focus:border-primary transition-all placeholder-transparent" 
+               id="{{ form.email.id_for_label }}" 
+               name="email" 
+               placeholder=" " 
+               type="email" 
+               value="{{ form.email.value|default:'' }}"
+               required/>
+        <label class="absolute left-12 top-1/2 -translate-y-1/2 text-outline pointer-events-none transition-all duration-200" for="{{ form.email.id_for_label }}">
+            Email Address
+        </label>
+    </div>
+
+    <div class="relative floating-label-input group">
+        <div class="absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">
+            <span class="material-symbols-outlined">lock</span>
+        </div>
+        <input class="w-full bg-[#1c1b1c] border border-outline-variant rounded-lg py-4 pl-12 pr-4 text-on-surface focus:outline-none focus:border-primary transition-all placeholder-transparent" 
+               id="{{ form.password.id_for_label }}" 
+               name="password" 
+               placeholder=" " 
+               type="password" 
+               required/>
+        <label class="absolute left-12 top-1/2 -translate-y-1/2 text-outline pointer-events-none transition-all duration-200" for="{{ form.password.id_for_label }}">
+            Password
+        </label>
+        <button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" type="button" onclick="togglePassword(this)">
+            <span class="material-symbols-outlined">visibility</span>
+        </button>
+    </div>
+
+    <div class="relative floating-label-input group">
+        <div class="absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">
+            <span class="material-symbols-outlined">verified_user</span>
+        </div>
+        <input class="w-full bg-[#1c1b1c] border border-outline-variant rounded-lg py-4 pl-12 pr-4 text-on-surface focus:outline-none focus:border-primary transition-all placeholder-transparent" 
+               id="{{ form.confirm_password.id_for_label }}" 
+               name="confirm_password" 
+               placeholder=" " 
+               type="password" 
+               required/>
+        <label class="absolute left-12 top-1/2 -translate-y-1/2 text-outline pointer-events-none transition-all duration-200" for="{{ form.confirm_password.id_for_label }}">
+            Confirm Password
+        </label>
+        <button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" type="button" onclick="togglePassword(this)">
+            <span class="material-symbols-outlined">visibility</span>
+        </button>
+    </div>
+
+    <button class="w-full py-4 rounded-lg bg-gradient-to-r from-primary-container to-[#bd00ff] text-white font-bold neon-glow-primary active:scale-[0.98] transition-all" type="submit">
+        Sign Up
+    </button>
+</form>
+
+<p class="mt-8 text-center text-outline">
+    Already have an account? 
+    <a class="text-primary font-bold hover:underline ml-1" href="{% url 'login' %}">Login</a>
+</p>
+{% endblock %}
